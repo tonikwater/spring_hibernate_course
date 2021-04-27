@@ -6,6 +6,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import com.luv2code.springdemo.mvc.validation.CourseCode;
+
 public class Customer {
 
 	
@@ -22,9 +24,20 @@ public class Customer {
 	@Max(value=10, message="must be <= 10")
 	private Integer freePasses;
 	
-	@NotNull(message="is required")
+	// @NotNull(message="is required")
 	@Pattern(regexp="^[a-zA-Z0-9]{5}", message="must be exactly 5 digits / characters")
 	private String postalCode;
+	
+	@CourseCode(value={"LUV", "HTB"}, message="must start with HTB or LUV")
+	private String courseCode;
+	
+	public String getCourseCode() {
+		return courseCode;
+	}
+
+	public void setCourseCode(String courseCode) {
+		this.courseCode = courseCode;
+	}
 
 	public String getFirstName() {
 		return firstName;
